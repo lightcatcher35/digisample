@@ -1,0 +1,194 @@
+.App {
+  text-align: center; }
+
+.page {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: fixed;
+  width: 100%;
+  height: 100%; }
+  .page .cover,
+  .page .layout {
+    width: 50%; }
+  @media screen and (max-width: 992px) {
+    .page .cover {
+      display: none; } }
+  .page .cover img {
+    width: 100%; }
+  .page .layout {
+    display: flex;
+    flex-direction: column; }
+    @media screen and (max-width: 992px) {
+      .page .layout {
+        width: 100%; } }
+    .page .layout .cover-mobile {
+      display: none;
+      position: absolute;
+      max-height: 437px;
+      overflow: hidden; }
+      @media screen and (max-width: 992px) {
+        .page .layout .cover-mobile {
+          display: block; } }
+      .page .layout .cover-mobile img {
+        width: 100%; }
+    .page .layout .content {
+      padding: 96px 106px 8px 120px; }
+      @media screen and (max-width: 992px) {
+        .page .layout .content {
+          padding: 248px 24px 0px 24px;
+          height: 238px; } }
+      .page .layout .content-title {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        text-align: left;
+        font-family: "ITC-Avant-Garde-Gothic-Bold"; }
+        @media screen and (max-width: 992px) {
+          .page .layout .content-title {
+            display: none; } }
+      .page .layout .content-description {
+        font-weight: 400;
+        size: 16px;
+        line-height: 25.6px;
+        color: #666666;
+        text-align: left;
+        margin-bottom: 25px;
+        font-family: "Avenir";
+        padding-right: 62px; }
+        @media screen and (max-width: 992px) {
+          .page .layout .content-description {
+            display: none; } }
+      .page .layout .content-url {
+        display: flex;
+        justify-content: flex-start; }
+        .page .layout .content-url a {
+          color: black;
+          text-decoration: none;
+          border-bottom: 1px solid black;
+          padding-bottom: 5px;
+          font-family: "Avenir";
+          font-weight: 900; }
+      @media screen and (max-width: 992px) {
+        .page .layout .content > .content-url {
+          display: none; } }
+      .page .layout .content-mobile {
+        display: none;
+        position: absolute; }
+        @media screen and (max-width: 992px) {
+          .page .layout .content-mobile {
+            display: flex;
+            flex-direction: column;
+            text-align: left; } }
+        .page .layout .content-mobile-title {
+          color: white;
+          display: block;
+          margin-top: 0px;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 130%;
+          letter-spacing: 1px; }
+        .page .layout .content-mobile .content-url a {
+          color: white;
+          border-bottom: 1px solid white;
+          font-weight: 900;
+          font-size: 12.8px;
+          line-height: 17px; }
+    .page .layout .product-slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; }
+      .page .layout .product-slider-list {
+        margin-top: 60px;
+        padding-top: 0px;
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding-left: 88px; }
+        @media screen and (max-width: 992px) {
+          .page .layout .product-slider-list {
+            padding-left: 12px;
+            margin-top: 28px; } }
+        .page .layout .product-slider-list .product-slider-item {
+          list-style: none;
+          margin-left: 32px; }
+          @media screen and (max-width: 992px) {
+            .page .layout .product-slider-list .product-slider-item {
+              margin-left: 12px;
+              width: 148px; } }
+          .page .layout .product-slider-list .product-slider-item .frame {
+            display: flex;
+            flex-direction: column;
+            width: auto;
+            max-width: 230px; }
+            .page .layout .product-slider-list .product-slider-item .frame .image {
+              margin-bottom: 12px; }
+              .page .layout .product-slider-list .product-slider-item .frame .image img {
+                width: 230px;
+                height: 314px; }
+                @media screen and (max-width: 992px) {
+                  .page .layout .product-slider-list .product-slider-item .frame .image img {
+                    width: 148px;
+                    height: 200px; } }
+            .page .layout .product-slider-list .product-slider-item .frame .title-row {
+              text-align: left;
+              font-family: "Avenir";
+              margin-bottom: 4px;
+              font-size: 12.8px; }
+            .page .layout .product-slider-list .product-slider-item .frame .specif-row {
+              display: flex;
+              justify-content: space-between; }
+              @media screen and (max-width: 992px) {
+                .page .layout .product-slider-list .product-slider-item .frame .specif-row {
+                  flex-direction: column; } }
+              .page .layout .product-slider-list .product-slider-item .frame .specif-row .price {
+                font-family: "Avenir";
+                font-weight: 600; }
+                @media screen and (max-width: 992px) {
+                  .page .layout .product-slider-list .product-slider-item .frame .specif-row .price {
+                    width: 100%;
+                    text-align: left; } }
+              @media screen and (max-width: 992px) {
+                .page .layout .product-slider-list .product-slider-item .frame .specif-row .color-variants {
+                  width: 100%;
+                  text-align: left;
+                  margin-top: 8px; } }
+              .page .layout .product-slider-list .product-slider-item .frame .specif-row .color-variants div.colors {
+                display: flex; }
+                .page .layout .product-slider-list .product-slider-item .frame .specif-row .color-variants div.colors div.color-option {
+                  list-style: none;
+                  height: 12px;
+                  width: 12px;
+                  margin: 0 4px; }
+                  .page .layout .product-slider-list .product-slider-item .frame .specif-row .color-variants div.colors div.color-option a.btn {
+                    position: relative;
+                    width: 12px;
+                    height: 12px;
+                    display: block; }
+                    .page .layout .product-slider-list .product-slider-item .frame .specif-row .color-variants div.colors div.color-option a.btn .color-option-inner {
+                      width: 12px;
+                      height: 12px;
+                      border-radius: 50%;
+                      position: absolute;
+                      z-index: 2; }
+                    .page .layout .product-slider-list .product-slider-item .frame .specif-row .color-variants div.colors div.color-option a.btn .color-option-outer {
+                      background: black;
+                      border-radius: 50%;
+                      width: 12px;
+                      height: 12px;
+                      position: absolute;
+                      top: 0px;
+                      z-index: 1;
+                      display: none; }
+                  .page .layout .product-slider-list .product-slider-item .frame .specif-row .color-variants div.colors div.color-option a.btn:hover .color-option-inner,
+                  .page .layout .product-slider-list .product-slider-item .frame .specif-row .color-variants div.colors div.color-option a.btn.active .color-option-inner {
+                    width: 8px;
+                    height: 8px;
+                    top: 1px;
+                    left: 1px;
+                    border: 1px solid white; }
+                  .page .layout .product-slider-list .product-slider-item .frame .specif-row .color-variants div.colors div.color-option a.btn:hover .color-option-outer,
+                  .page .layout .product-slider-list .product-slider-item .frame .specif-row .color-variants div.colors div.color-option a.btn.active .color-option-outer {
+                    display: block; }
