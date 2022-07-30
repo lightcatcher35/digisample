@@ -1,101 +1,6 @@
 import { useEffect, useState } from "react";
 import coverPhoto from "./../images/cover.jpg";
-
-const items = [
-  {
-    image: "/images/bg1.jpg",
-    title: "365 Signature Hoodie",
-    price: "€33.95",
-    colorVariants: [
-      {
-        name: "blue",
-        colorCode: "#99C3CC",
-      },
-      {
-        name: "pastelRed",
-        colorCode: "#CC9999",
-      },
-      {
-        name: "purple",
-        colorCode: " #CB99CC",
-      },
-      {
-        name: "green",
-        colorCode: "#A6CC99",
-      },
-    ],
-  },
-  {
-    image: "/images/bg2.jpg",
-    title: "Organic Skinny High Waist Jeans",
-    price: "€33.95",
-    colorVariants: [
-      {
-        name: "blue",
-        colorCode: "#99C3CC",
-      },
-      {
-        name: "pastelRed",
-        colorCode: "#CC9999",
-      },
-      {
-        name: "purple",
-        colorCode: " #CB99CC",
-      },
-      {
-        name: "green",
-        colorCode: "#A6CC99",
-      },
-    ],
-  },
-  {
-    image: "/images/bg3.jpg",
-    title: "Organic Skinny High Waist Jeans",
-    price: "€33.95",
-    colorVariants: [
-      {
-        name: "blue",
-        colorCode: "#99C3CC",
-      },
-      {
-        name: "pastelRed",
-        colorCode: "#CC9999",
-      },
-      {
-        name: "purple",
-        colorCode: " #CB99CC",
-      },
-      {
-        name: "green",
-        colorCode: "#A6CC99",
-      },
-    ],
-  },
-  {
-    image: "/images/bg3.jpg",
-    title: "Organic Skinny High Waist Jeans",
-    price: "€33.95",
-    colorVariants: [
-      {
-        name: "blue",
-        colorCode: "#99C3CC",
-      },
-      {
-        name: "pastelRed",
-        colorCode: "#CC9999",
-      },
-      {
-        name: "purple",
-        colorCode: " #CB99CC",
-      },
-      {
-        name: "green",
-        colorCode: "#A6CC99",
-      },
-    ],
-  }
-];
-
+import ProductList from "./ProductList";
 const Layout = () => {
   const [xDiff, setXDiff] = useState(0);
   const [dragX, setDragX] = useState(0);
@@ -103,69 +8,46 @@ const Layout = () => {
   const [dragItem, setDragItem] = useState({});
   const [leftLimit, setLeftLimit] = useState(0);
 
-  const handleMouseDown = (e,mobile=false) => {
-
-
-    //if((document.querySelector(".drag-container").clientWidth-document.querySelector(".drag-inside").clientWidth)-32>-1) return;
+  const handleMouseDown = (e, mobile = false) => {
     setBefore(dragX);
     setDragItem(e.currentTarget);
 
-    //console.log("handleMouseDown : ", e.currentTarget);
-    ///console.log("clientX : ", e.clientX);
-
-    //console.log("drag-container : ", document.querySelector(".drag-inside"));
-    //console.log("drag-container 2 : ", document.querySelector(".drag-container").clientWidth-document.querySelector(".drag-inside").clientWidth);
-    
     let leftLimitVar;
-    if(mobile){
-      leftLimitVar=document.querySelector(".drag-container").clientWidth -
-      document.querySelector(".drag-inside").clientWidth -
-      24;
-    }else if(mobile){
-      leftLimitVar=document.querySelector(".drag-container").clientWidth -
-      document.querySelector(".drag-inside").clientWidth -
-      32;
+    if (mobile) {
+      leftLimitVar =
+        document.querySelector(".drag-container").clientWidth -
+        document.querySelector(".drag-inside").clientWidth -
+        24;
+    } else {
+      leftLimitVar =
+        document.querySelector(".drag-container").clientWidth -
+        document.querySelector(".drag-inside").clientWidth -
+        32;
     }
-    
-    console.log("leftLimitVar : ", leftLimitVar);
 
     setLeftLimit(leftLimitVar);
     if (e.changedTouches) {
-      ///console.log("touch : ", e.changedTouches["0"].clientX);
       setXDiff(e.changedTouches["0"].clientX);
       return;
     }
 
-    console.log("Desktop : ");
     setXDiff(e.clientX);
   };
 
   const handleMouseUp = (e) => {
     setDragItem({});
-
-    console.log("handleMouseUp : ", e.currentTarget);
   };
 
   const handleTouchMove = (e) => {
-    console.log("handleTouchMove");
     if (Object.keys(dragItem).length !== 0) {
       if (e.changedTouches) {
-        console.log("dif : ", dragX);
-        console.log("leftLimit : ", leftLimit);
-
         if (dragX < leftLimit) {
           setDragX(leftLimit + 5);
           setDragItem({});
-          return
+          return;
         }
         if (e.changedTouches["0"].clientX - xDiff + before < 1)
           setDragX(e.changedTouches["0"].clientX - xDiff + before);
-
-        //console.log("xDiff : ", xDiff);
-        //console.log(e.changedTouches["0"].clientX);
-       // console.log("before : ", before);
-
-        //console.log("dif : ", dragX);
       }
     }
   };
@@ -173,24 +55,14 @@ const Layout = () => {
   useEffect(() => {
     const handleWindowMouseMove = (event) => {
       if (Object.keys(dragItem).length !== 0) {
-        console.log("-------------");
-
-        console.log("dif : ", dragX);
-        console.log("leftLimit : ", leftLimit);
-
         if (dragX < leftLimit) {
           setDragX(leftLimit + 5);
           setDragItem({});
 
           return;
-        } else if (event.clientX - xDiff + before < 1)
+        }
+        if (event.clientX - xDiff + before < 1)
           setDragX(event.clientX - xDiff + before);
-
-        //console.log("xDiff : ", xDiff);
-        //console.log(event.clientX);
-        //console.log("before : ", before);
-
-        //console.log("dif : ", dragX);
       }
     };
     window.addEventListener("mousemove", handleWindowMouseMove);
@@ -230,56 +102,12 @@ const Layout = () => {
           className="product-slider-list drag-inside"
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
-          onTouchStart={(e)=>handleMouseDown(e,true)}
+          onTouchStart={(e) => handleMouseDown(e, true)}
           onTouchEnd={handleMouseUp}
           onTouchMove={handleTouchMove}
           style={{ left: dragX }}
         >
-          {items.length ? (
-            items.map((product, key) => (
-              <div className="product-slider-item" key={key}>
-                <div className="frame" style={{ userSelect: "none" }}>
-                  <div className="image">
-                    <img
-                      src={product.image}
-                      alt="image 1"
-                      style={{ pointerEvents: "none" }}
-                    />
-                  </div>
-                  <div className="title-row">{product.title}</div>
-                  <div className="specif-row">
-                    <span className="price">{product.price}</span>
-                    <div className="color-variants">
-                      <div className="colors">
-                        {product.colorVariants.length ? (
-                          product.colorVariants.map((color, keyChild) => (
-                            <div className="color-option" key={keyChild}>
-                              <a
-                                href="#"
-                                className={`btn ${
-                                  keyChild === 0 ? "active" : ""
-                                }`}
-                              >
-                                <div
-                                  className="color-option-inner"
-                                  style={{ backgroundColor: color.colorCode }}
-                                ></div>
-                                <div className="color-option-outer"></div>
-                              </a>
-                            </div>
-                          ))
-                        ) : (
-                          <></>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))
-          ) : (
-            <></>
-          )}
+          <ProductList />
         </div>
       </section>
     </div>
