@@ -1,6 +1,6 @@
 const ProductListItem = (props) => {
     const {product}=props;
-    return (<>
+    return (<div className="product-slider-item">
 
 <div className="frame" style={{ userSelect: "none" }}>
                   <div className="image">
@@ -40,7 +40,7 @@ const ProductListItem = (props) => {
                   </div>
                 </div>
     
-    </>);
+    </div>);
 };
 
 export default ProductListItem;

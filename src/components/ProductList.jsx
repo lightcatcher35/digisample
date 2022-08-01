@@ -98,7 +98,7 @@ const ProductList = () => {
         <>
             {items.length ? (
             items.map((product, key) => (
-                <ProductListItem className="product-slider-item" key={key} product={product}/>
+                <ProductListItem key={key} product={product}/>
             ))
           ) : (
             <></>
